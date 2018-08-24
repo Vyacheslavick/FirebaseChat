@@ -1,5 +1,6 @@
 package com.example.slavick.firebasechat;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                Intent intent = new Intent(LoginActivity.this, ChattingActivity.class);
+                                startActivityForResult(intent, 2);
                             } else {
                                 sthWrong.setText("Check out your email and password and try again");
                             }

@@ -42,7 +42,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
+                            Intent intent = new Intent(RegistrationActivity.this, ChattingActivity.class);
+                            startActivityForResult(intent, 1);
                         }
                     });
         }
@@ -50,7 +51,8 @@ public class RegistrationActivity extends AppCompatActivity {
     }
     @OnClick(R.id.haveAcc)
     public void onSecondClick(){
-        Intent intent =  new Intent();
+        Intent intent =  new Intent(RegistrationActivity.this, LoginActivity.class);
+        startActivity(intent);
 
     }
     public boolean isPasswordValid(String password){
