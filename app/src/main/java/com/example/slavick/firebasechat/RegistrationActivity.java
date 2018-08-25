@@ -43,6 +43,9 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Intent intent = new Intent(RegistrationActivity.this, ChattingActivity.class);
+                            intent.putExtra("username" , email.getText().toString() );
+                            email.setText("");
+                            password.setText("");
                             startActivityForResult(intent, 1);
                         }
                     });
