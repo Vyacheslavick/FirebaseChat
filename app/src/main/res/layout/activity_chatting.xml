@@ -33,7 +33,7 @@
     <ListView
         android:id="@+id/messageList"
         android:layout_width="match_parent"
-        android:layout_height="3000dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="56dp"/>
