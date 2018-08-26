@@ -15,12 +15,11 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
-import com.google.firebase.database.DatabaseReference;
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 
-import java.util.Date;
 
 
 public class ChattingActivity extends AppCompatActivity {
@@ -52,18 +51,6 @@ public class ChattingActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatting);
@@ -81,9 +68,9 @@ public class ChattingActivity extends AppCompatActivity {
         findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().setValue(new Message(FirebaseAuth.getInstance()
+                FirebaseDatabase.getInstance().getReference().push().setValue(new Message(FirebaseAuth.getInstance()
                                 .getCurrentUser().getEmail(),
-                                newMessage.getText().toString(), new Date().getTime()));
+                                newMessage.getText().toString()));
                 newMessage.setText("");
             }
         });

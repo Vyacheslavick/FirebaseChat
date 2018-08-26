@@ -24,12 +24,12 @@ public class Message {
         return messageTime;
     }
 
-    public Message() {}
+    public  Message() {}
 
-    public Message(String messageUser, String messageText, long messageTime) {
+    public Message(String messageUser, String messageText) {
         this.messageUser = messageUser;
         this.messageText = messageText;
-        this.messageTime = new Date().getTime();
+        messageTime = new Date().getTime();
 
     }
 }
