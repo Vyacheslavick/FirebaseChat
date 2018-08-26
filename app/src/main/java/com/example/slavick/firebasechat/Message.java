@@ -7,16 +7,8 @@ public class Message {
     private String messageText;
     private long messageTime;
 
-    public void setMessageUser(String messageUser) {
-        this.messageUser = messageUser;
-    }
-
     public void setMessageText(String messageText) {
         this.messageText = messageText;
-    }
-
-    public void setMessageTime(long messageTime) {
-        this.messageTime = messageTime;
     }
 
     public String getMessageUser() {
@@ -31,6 +23,8 @@ public class Message {
     public long getMessageTime() {
         return messageTime;
     }
+
+    public Message() {}
 
     public Message(String messageUser, String messageText, long messageTime) {
         this.messageUser = messageUser;

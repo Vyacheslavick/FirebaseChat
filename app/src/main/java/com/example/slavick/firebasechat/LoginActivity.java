@@ -34,21 +34,18 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.login)
     public void onClick() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
-            sthWrong.setText("This account already in use at the moment!");
-        } else {
-            auth.signInWithEmailAndPassword(emailAddress.getText().toString(), passwordLogin.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Intent intent = new Intent(LoginActivity.this, ChattingActivity.class);
-                                startActivityForResult(intent, 2);
-                            } else {
-                                sthWrong.setText("Check out your email and password and try again");
-                            }
+        auth.signInWithEmailAndPassword(emailAddress.getText().toString(), passwordLogin.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(LoginActivity.this, ChattingActivity.class);
+                            startActivityForResult(intent, 2);
+                        } else {
+                            sthWrong.setText("Check out your email and password and try again");
                         }
-                    });
-        }
+                    }
+                });
     }
 }
+
