@@ -71,6 +71,7 @@ public class ChattingActivity extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference().child("chatting").push().setValue(new Message(FirebaseAuth.getInstance()
                                 .getCurrentUser().getEmail(),
                                 newMessage.getText().toString()));
+
                 newMessage.setText("");
             }
         });
