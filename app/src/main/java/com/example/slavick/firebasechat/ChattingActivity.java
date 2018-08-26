@@ -88,7 +88,7 @@ public class ChattingActivity extends AppCompatActivity {
                         .getReference()
                         .push()
                         .setValue(new Message(FirebaseAuth.getInstance()
-                                .getCurrentUser().getDisplayName(),
+                                .getCurrentUser().getEmail(),
                                 newMessage.getText().toString(), new Date().getTime()));
                 newMessage.setText("");
             }
