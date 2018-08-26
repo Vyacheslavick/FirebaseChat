@@ -50,19 +50,6 @@ public class ChattingActivity extends AppCompatActivity {
         };
         messageList.setAdapter(adapter);
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +68,8 @@ public class ChattingActivity extends AppCompatActivity {
         findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().setValue(new Message(FirebaseAuth.getInstance()
-                                .getCurrentUser().getEmail(),
+                FirebaseDatabase.getInstance().getReference().push().setValue(new Message(FirebaseAuth.getInstance()
+                                .getCurrentUser().getDisplayName(),
                                 newMessage.getText().toString(), new Date().getTime()));
                 newMessage.setText("");
             }
