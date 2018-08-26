@@ -29,7 +29,7 @@ public class ChattingActivity extends AppCompatActivity {
 
     private void displayChatMessages() {
         ListView messageList = findViewById(R.id.messageList);
-        Query query = FirebaseDatabase.getInstance().getReference();
+        Query query = FirebaseDatabase.getInstance().getReference().child("chatting");
         FirebaseListOptions<Message> options =
                 new FirebaseListOptions.Builder<Message>()
                         .setQuery(query, Message.class)
@@ -68,7 +68,7 @@ public class ChattingActivity extends AppCompatActivity {
         findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().push().setValue(new Message(FirebaseAuth.getInstance()
+                FirebaseDatabase.getInstance().getReference().child("chatting").push().setValue(new Message(FirebaseAuth.getInstance()
                                 .getCurrentUser().getEmail(),
                                 newMessage.getText().toString()));
                 newMessage.setText("");
